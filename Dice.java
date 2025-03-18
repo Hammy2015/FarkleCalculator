@@ -35,6 +35,16 @@ public class Dice{
         sixChance = chances[5];
         status = true;
     }
+    public Dice(Dice dice){
+        int[] chances = dice.getChances();
+        oneChance = chances[0];
+        twoChance = chances[1];
+        threeChance = chances[2];
+        fourChance = chances[3];
+        fiveChance = chances[4];
+        sixChance = chances[5];
+        status = true;
+    }
     private int totalChances(){
         return oneChance + twoChance + threeChance + fourChance + fiveChance + sixChance;
     }
@@ -59,5 +69,8 @@ public class Dice{
         } else {
             return 6;
         }
+    }
+    public int[] getChances(){
+        return new int[]{oneChance, twoChance, threeChance, fourChance, fiveChance, sixChance};
     }
 }
