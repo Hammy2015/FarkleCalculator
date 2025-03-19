@@ -8,14 +8,15 @@ public class Match {
     private int maxscore;
 
     public Match(Dice[] playerdice, Dice[] computerdice, int maxscore){
+        //TODO: Implement this constructor, used for playing against the computer
+    }
+
+    public Match(Dice[] playerdice,int maxscore){
         this.playerdice = new ArrayList<>();
-        this.computerdice = new ArrayList<>();
         for(int i = 0; i < playerdice.length; i++){
             this.playerdice.add(new Dice(playerdice[i]));
         }
-        for(int i = 0; i < computerdice.length; i++){
-            this.computerdice.add(new Dice(computerdice[i]));
-        }
         this.maxscore = maxscore;
+        playerscore = 0;
     }
 }
