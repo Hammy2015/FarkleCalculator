@@ -4,20 +4,30 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 public class MatchGui extends JPanel{
-    private int score;
-    private int enemyScore;
+    ///Match components
+    private int playerscore;
+    private int computerscore;
+    private ArrayList<Dice> playerdice;
+    private ArrayList<Dice> computerdice;
+    private int maxscore;
+    ///GUI components
     private JRadioButton[] diceRadio;
     private JTextField[] diceField;
     private JLabel explanationLabel;
     private JButton rollButton;
     private JLabel scoreLabel;
     private JTextField scoreField;
+    private JTextField rollScoreField;
+    private JLabel rollScoreLabel;
 
-    public MatchGui(){
+    public MatchGui(Dice[] playerdice,int maxscore){
+
+        //Gui setups
         JFrame match = new JFrame("Farckle Match");
 
         match.setSize(900,600);
-
+        match.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         ArrayList<JLabel> labels = new ArrayList<>();
         ArrayList<JButton> buttons = new ArrayList<>();
         diceRadio = new JRadioButton[6];
@@ -38,6 +48,8 @@ public class MatchGui extends JPanel{
         };
         scoreLabel = new JLabel ("My Score");
         scoreField = new JTextField (5);
+        rollScoreField = new JTextField (5);
+        rollScoreLabel = new JLabel ("Roll Score:");
         //adjust size and set layout
         setPreferredSize (new Dimension (225, 313));
         setLayout (null);
@@ -47,6 +59,8 @@ public class MatchGui extends JPanel{
         add (rollButton);
         add (scoreLabel);
         add (scoreField);
+        add (rollScoreField);
+        add (rollScoreLabel);
 
         //set component bounds (only needed by Absolute Positioning)
         diceRadio[0].setBounds (120, 95, 95, 25);
@@ -65,7 +79,22 @@ public class MatchGui extends JPanel{
         rollButton.setBounds (65, 250, 100, 25);
         scoreLabel.setBounds (20, 0, 100, 25);
         scoreField.setBounds (20, 20, 100, 25);
+        rollScoreField.setBounds (120, 250, 100, 25);
+        rollScoreLabel.setBounds (20, 250, 100, 25);
+
+
+        this.playerdice = new ArrayList<>();
+        for(int i = 0; i < playerdice.length; i++){
+            this.playerdice.add(new Dice(playerdice[i]));
+        }
+        this.maxscore = maxscore;
+        playerscore = 0;
     }
+
+    public MatchGui(Dice[] playerdice, Dice[] computerdice, int maxscore){
+        //TODO: Implement this constructor, used for playing against the computer
+    }
+
 
 
 }
