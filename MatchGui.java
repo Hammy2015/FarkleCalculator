@@ -44,6 +44,12 @@ public class MatchGui extends JPanel{
         rollButton = new JButton ("Roll"){
             public void actionPerformed(ActionEvent e){
                 // Roll the dice
+                // Roll dice if not selected
+                for (int i = 0; i < 6; i++){
+                    if (!diceRadio[i].isSelected()){
+                        playerdice[i].setStatus(false);
+                    }
+                }
             }
         };
         scoreLabel = new JLabel ("My Score");
