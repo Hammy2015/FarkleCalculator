@@ -40,6 +40,8 @@ public class GameGui extends JPanel{
         soloMatchButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 MatchGui match = new MatchGui(playerdice, Integer.parseInt(scoreInputField.getText()));
+                match.setSize(900,600);
+                match.setVisible(true);
             }
         });
 

@@ -101,6 +101,12 @@ public class MatchGui extends JPanel{
         //TODO: Implement this constructor, used for playing against the computer
     }
 
-
+    public void startMatch(){
+        JFrame match = new JFrame("Farckle Match");
+        match.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        match.getContentPane().add(this);
+        match.pack();
+        match.setVisible(true);
+    }
 
 }
