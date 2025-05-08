@@ -39,9 +39,22 @@ public class GameGui extends JPanel{
         //add action listeners
         soloMatchButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                MatchGui match = new MatchGui(playerdice, Integer.parseInt(scoreInputField.getText()));
+                int newGameScore = 0;
+                if (scoreInputField.getText().isEmpty()){
+                    newGameScore = 10000;
+                } else {
+                    newGameScore = Integer.parseInt(scoreInputField.getText());
+                }
+                
+                if (newGameScore < 1){
+                    JOptionPane.showMessageDialog(null, "Automatically setting score to 10,000.");
+                    newGameScore = 10000;
+                    return;
+                }
+                MatchGui match = new MatchGui(playerdice, newGameScore);
                 match.setSize(900,600);
                 match.setVisible(true);
+                match.startMatch();
             }
         });
 

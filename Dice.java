@@ -8,6 +8,8 @@ public class Dice{
 
     private boolean status;
 
+    private int value;
+
     public Dice(){
         oneChance = 1;
         twoChance = 1;
@@ -54,23 +56,28 @@ public class Dice{
     public boolean getStatus(){
         return status;
     }
-    public int roll(){
+    public void roll(){
         int roll = (int)(Math.random() * totalChances()) + 1;
         if(roll <= oneChance){
-            return 1;
+            value = 1;
         } else if(roll <= oneChance + twoChance){
-            return 2;
+            value = 2;
         } else if(roll <= oneChance + twoChance + threeChance){
-            return 3;
+            value = 3;
         } else if(roll <= oneChance + twoChance + threeChance + fourChance){
-            return 4;
+            value = 4;
         } else if(roll <= oneChance + twoChance + threeChance + fourChance + fiveChance){
-            return 5;
+            value = 5;
         } else {
-            return 6;
+            value = 6;
         }
     }
+    
     public int[] getChances(){
         return new int[]{oneChance, twoChance, threeChance, fourChance, fiveChance, sixChance};
+    }
+
+    public int getValue(){
+        return value;
     }
 }

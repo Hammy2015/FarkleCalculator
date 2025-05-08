@@ -41,17 +41,34 @@ public class MatchGui extends JPanel{
             add(diceField[i]);
         }
         explanationLabel = new JLabel ("Hold dice");
-        rollButton = new JButton ("Roll"){
+        rollButton = new JButton ("Roll");
+        rollButton.addActionListener(new ActionListener()
+        {
             public void actionPerformed(ActionEvent e){
                 // Roll the dice
                 // TODO: Implement the roll logic better
+                // TODO: Check if the dice has already been locked in previous rolls, display that differently
+                System.out.println("Rolling dice...");
                 for (int i = 0; i < 6; i++){
-                    if (!diceRadio[i].isSelected()){
+                    if (diceRadio[i].isSelected()){
+                        System.out.println("Dice " + (i + 1) + " is not selected, not rolling.");
                         playerdice[i].setStatus(false);
+                    } else {
+                        System.out.println("Dice " + (i + 1) + " is selected, rolling.");
+                        playerdice[i].setStatus(true);
                     }
                 }
+                for (int i = 0; i < 6; i++){
+                    System.out.println("Checking dice " + (i + 1) + ": " + playerdice[i].getValue());
+                    if (playerdice[i].getStatus()){
+                        playerdice[i].roll();
+                        System.out.println("Dice " + (i + 1) + ": " + playerdice[i].getValue());
+                        diceField[i].setText(String.valueOf(playerdice[i].getValue()));
+                    }
+                }
+
             }
-        };
+        });
         scoreLabel = new JLabel ("My Score");
         scoreField = new JTextField (5);
         rollScoreField = new JTextField (5);
