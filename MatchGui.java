@@ -7,6 +7,9 @@ public class MatchGui extends JPanel{
     ///Match components
     private int playerscore;
     private int computerscore;
+    private int playerRollScore;
+    private int computerRollScore;
+
     private ArrayList<Dice> playerdice;
     private ArrayList<Dice> computerdice;
     private int maxscore;
@@ -48,6 +51,7 @@ public class MatchGui extends JPanel{
                 // Roll the dice
                 // TODO: Implement the roll logic better
                 // TODO: Check if the dice has already been locked in previous rolls, display that differently
+                
                 System.out.println("Rolling dice...");
                 for (int i = 0; i < 6; i++){
                     if (diceRadio[i].isSelected()){
@@ -126,4 +130,8 @@ public class MatchGui extends JPanel{
         match.setVisible(true);
     }
 
+    private void rollScores(){
+        //TODO: Implement the roll scores logic
+        // This method should calculate the score of the current roll and update the score fields accordingly
+    }
 }
